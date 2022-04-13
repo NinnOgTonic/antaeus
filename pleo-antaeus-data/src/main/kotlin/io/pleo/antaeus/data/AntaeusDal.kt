@@ -89,6 +89,20 @@ class AntaeusDal(private val db: Database) {
         }
     }
 
+    fun fetchCustomersWithNoInvoiceInCurrentMonth(limit: Int = 0): List<Customer> {
+        // TODO: This query would probably preform better if we had an index on dueAt in invoices
+        return transaction(db) {
+            Join(
+                CustomerTable, InvoiceTable,
+                onColumn = CustomerTable.id, otherColumn = InvoiceTable.customerId,
+                joinType = JoinType.LEFT
+            )
+                .select { InvoiceTable.dueAt.isNull() or (InvoiceTable.dueAt.month() neq CurrentDateTime().month()) }
+                .limit(limit)
+                .map { it.toCustomer() }
+        }
+    }
+
     fun createCustomer(currency: Currency): Customer? {
         val id = transaction(db) {
             // Insert the customer and return its new id.
