@@ -12,7 +12,8 @@ object InvoiceTable : Table() {
     val currency = varchar("currency", 3)
     val value = decimal("value", 1000, 2)
     val customerId = reference("customer_id", CustomerTable.id)
-    val status = text("status")
+    val status = text("status") // TODO: Probably not the best field type for status
+    val dueAt = datetime("due_at")
 }
 
 object CustomerTable : Table() {

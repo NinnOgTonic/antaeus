@@ -12,6 +12,7 @@ import io.pleo.antaeus.models.Invoice
 import io.pleo.antaeus.models.InvoiceStatus
 import io.pleo.antaeus.models.Money
 import org.junit.jupiter.api.Test
+import org.joda.time.DateTime
 
 class BillingServiceTest {
     private val paymentProvider = mockk<PaymentProvider> {
@@ -26,13 +27,15 @@ class BillingServiceTest {
                 1,
                 2,
                 Money(10.toBigDecimal(), Currency.EUR),
-                InvoiceStatus.PENDING
+                InvoiceStatus.PENDING,
+                DateTime.now()
             ),
             Invoice(
                 5,
                 10,
                 Money(55.toBigDecimal(), Currency.USD),
-                InvoiceStatus.PENDING
+                InvoiceStatus.PENDING,
+                DateTime.now()
             )
         )
 
@@ -72,13 +75,15 @@ class BillingServiceTest {
                 1,
                 2,
                 Money(10.toBigDecimal(), Currency.EUR),
-                InvoiceStatus.PENDING
+                InvoiceStatus.PENDING,
+                DateTime.now()
             ),
             Invoice(
                 5,
                 10,
                 Money(55.toBigDecimal(), Currency.USD),
-                InvoiceStatus.PAID
+                InvoiceStatus.PAID,
+                DateTime.now()
             )
         )
 
@@ -121,13 +126,15 @@ class BillingServiceTest {
                 1,
                 2,
                 Money(10.toBigDecimal(), Currency.EUR),
-                InvoiceStatus.PENDING
+                InvoiceStatus.PENDING,
+                DateTime.now()
             ),
             Invoice(
                 5,
                 10,
                 Money(55.toBigDecimal(), Currency.USD),
-                InvoiceStatus.PENDING
+                InvoiceStatus.PENDING,
+                DateTime.now()
             )
         )
 
