@@ -14,12 +14,12 @@ class BillingService(
     private val paymentProvider: PaymentProvider,
     private val invoiceService: InvoiceService,
     private val batchSize: Int = 100,
-    private val interval: Long = 2000
+    private val intervalMs: Long = 2000
 ) {
     private val billingTask: Timer = Timer()
 
     fun run() {
-        billingTask.scheduleAtFixedRate(timerTask { runBillingBatch() }, interval, interval)
+        billingTask.scheduleAtFixedRate(timerTask { runBillingBatch() }, intervalMs, intervalMs)
     }
 
     internal fun runBillingBatch() {

@@ -49,8 +49,7 @@ class BillingServiceTest {
             BillingService(
                 paymentProvider = paymentProvider,
                 invoiceService = invoiceService,
-                batchSize = 2,
-                interval = 2000
+                batchSize = 2
             )
 
         // Execute
@@ -97,8 +96,7 @@ class BillingServiceTest {
             BillingService(
                 paymentProvider = paymentProvider,
                 invoiceService = invoiceService,
-                batchSize = 2,
-                interval = 2000
+                batchSize = 2
             )
 
         // Execute
@@ -148,8 +146,7 @@ class BillingServiceTest {
             BillingService(
                 paymentProvider = paymentProvider,
                 invoiceService = invoiceService,
-                batchSize = 2,
-                interval = 2000
+                batchSize = 2
             )
 
         // Execute
